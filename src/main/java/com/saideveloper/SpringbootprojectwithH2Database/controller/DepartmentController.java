@@ -34,9 +34,18 @@ public class DepartmentController {
     @PutMapping("/saveorupdate")
  public Department saveorupdate(@RequestBody Department department){
      return departmentservice.saveorupdate(department);
-
-
-
- }
-
+    }
+    @GetMapping("/findByname/{departmentName}")
+    public Department findByName( @PathVariable("departmentName") String  departmentName){
+       return departmentservice.findByDepartmentName(departmentName);
+    }
+    @DeleteMapping("/deleteById/{id}")
+    public String deleteById(@PathVariable("id") Long departmentId){
+        return departmentservice.deleteById(departmentId);
+    }
+    @DeleteMapping("/deleteAll")
+    public String deleteall(){
+      departmentservice.deleteAll();
+      return "deleted all successfully";
+    }
     }

@@ -15,6 +15,12 @@ public interface Departmentservice {
 
     Department saveorupdate(Department department);
 
+   public Department findByDepartmentName(String departmentName);
+
+   public String deleteById(Long departmentId);
+
+  public  void deleteAll();
+
 
     // public Department updatedept(Department department, Long departmentId);
 }

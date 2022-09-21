@@ -20,6 +20,7 @@ public class Departmentserviceimpl implements  Departmentservice{
 
     @Override
     public List<Department> fetchalldata() {
+
         return departmentRepository.findAll();
     }
 
@@ -33,7 +34,23 @@ public class Departmentserviceimpl implements  Departmentservice{
         return departmentRepository.save(department);
     }
 
-    /*@Override
+    @Override
+    public Department findByDepartmentName(String departmentName) {
+        return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
+    }
+
+    @Override
+    public String deleteById(Long departmentId) {
+        departmentRepository.deleteById(departmentId);
+        return "deleted successfully";
+    }
+
+    @Override
+    public void deleteAll() {
+        departmentRepository.deleteAll();
+    }
+
+    /* @Override
     public Department updatedept(Department department, Long departmentId) {
        Department dept= departmentRepository.findById(departmentId).get();
         if(Objects.nonNull(department.getDepartmentName()) &&
